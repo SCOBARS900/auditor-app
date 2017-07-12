@@ -7,33 +7,49 @@
     
  <div class="card">
         <div class="card-header" data-background-color="turquoise">
-                        <h2> Signup</h2>
+                        <h2 class="lsh2"> Sign Up</h2>
                     </div>
             
                     
             <div class="card-content">
                 <% if (message != null) { %>
-                <div class="alert-danger"><%= message %></div>
+                <div>
+                 <p id="noResultsFound"><%= message %>
+                </div>
                 <% } %>
                      <form action="/signup" method="post">
                       <div class="form-group">
-                          <label class="category">Username:</label>
-                          <input type="text" class="form-control" name="username" maxlength="20">
+                          <label id="username-label" class="category">Username:</label>
+                          <input type="text" class="form-control login-control" name="username" maxlength="20">
                       </div>     
                       <div class="form-group">
-                          <label class="category">Email:</label>
-                          <input type="text" class="form-control" name="email" maxlength="50">
+                          <label id="email-label" class="category">Email:</label>
+                          <input type="text" class="form-control password-control" name="email" maxlength="50">
                       </div>
                       <div class="form-group">
-                        <label class="category">Password:</label>
-                        <input type="password" class="form-control" name="password" maxlength="20" />
+                        <label id="password-label" class="category">Password:</label>
+                        <input type="password" class="form-control password-control" name="password" maxlength="20" />
                       </div>
                       <div>
-                        <input type="submit" class="form-control btn-default submitPoll submitSignup" value="Submit" />
+                        <input id="submitLogin" type="submit" class="form-control btn-default submitPoll submitSignup" value="Sign Up" />
                       </div>
                     </form>
-
+                
             </div>
+     
+            <div class="card-footer card-footer-main">
+            <div class="stats">
+                 <a id="loginB" href="/login" class="btn btn-default"><span class="fa fa-sign-in"></span> Login</a>
+                <a id="twitterB" href="/auth/twitter" class="btn btn-default"><span class="fa fa-twitter"></span> Twitter</a>
+                <a id="googleB" href="/auth/google" class="btn btn-default"><span class="fa fa-google-plus"></span> Google</a> 
+                <a id="logoutB" href="/logout" class="btn btn-default"><span class="fa fa-user"></span> Logout</a>
+            </div>
+            </div>    
+     
+     
+     
+     
+     
     </div>
 
 

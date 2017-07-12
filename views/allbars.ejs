@@ -1,0 +1,149 @@
+<% include partials/head %>
+
+<body> 
+    <div class="container">
+        
+        <div class="card card-main">
+         <div class="card-header card-main-header" data-background-color="blue">
+             <h1 class="titleh1">Nightlife App</h1>
+             <p class="category" id="mainTitle">Design by Julio Escobar</p>
+         </div>
+            
+            <div class="card-form">
+            <form action="/search" method="post">
+              <div class="form-group">
+              <label class="category" id="newCityLabel">City:  </label>
+              <input type="text" class="form-control input-control" name="city" placeholder="Enter New City" maxlength="50">
+              <input type="submit" class="form-control submit-control btn-default submitSearch" value="Search" />
+              </div>
+              
+            </form>
+            </div>
+            
+            
+            <div class="card-footer card-footer-main">
+            <div class="stats">
+                 <a id="loginB" href="/login" class="btn btn-default"><span class="fa fa-sign-in"></span> Login</a>
+                 <a id="signupB" href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>
+                <a id="twitterB" href="/auth/twitter" class="btn btn-default"><span class="fa fa-twitter"></span> Twitter</a>
+                <a id="googleB" href="/auth/google" class="btn btn-default"><span class="fa fa-google-plus"></span> Google</a> 
+                <a id="logoutB" href="/logout" class="btn btn-default"><span class="fa fa-user"></span> Logout</a>
+            </div>
+            </div>    
+        </div>
+        
+        
+    <% if ( barlist.length > 0) { %>
+        <div class="row">
+        <form action='/registrybar' method="post">
+        <%    for (i=0; i < barlist.length; i++) { %>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="card">
+         <div class="card-header card-header-bars-title" data-background-color="neworange">
+             <a href="/bar/<%= encodedlist[i] %>"><%= barlist[i].name %></a>
+         </div>
+        
+        
+         <div class="card-content">
+        <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="imageBar">
+        <img src="<%= barlist[i].image_url %>">
+        </div>
+        </div>  
+             
+             <% if ( bardata.length > 0) { %>
+                <%    for (z=0; z < bardata.length; z++) { %>
+                
+                    <% if(bardata[z].bars.id == barlist[i].id) { %>
+                 <% goingtonight = bardata[z].bars.voteUsersToday.length %>
+                 <% totalvisitors = bardata[z].bars.usersAllTime %>
+                    
+        <%     var mapingUsers = bardata[z].bars.voteUsersToday.map(function(ut) { %>
+        <%          if (ut.voteUserTodayId == userid) { %>
+                <% lightgoing = true %> 
+          <%        } %>
+         <%    }); %>
+                
+                    <% } %>
+                    
+                  
+             <%   } %>
+             <%   } %>
+             
+             <% if (lightgoing) { %>
+             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 gB">
+                 <input type="submit" name="<%= barlist[i].id %>" value="<%= goingtonight %> Going" class="btn btn-default markButtons goingButton greenB">    
+             </div>
+             <% } else { %>
+             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 gB">
+                 <input type="submit" name="<%= barlist[i].id %>" value="<%= goingtonight %> Going" class="btn btn-default markButtons goingButton whiteB">    
+             </div>        
+             <% } %>
+             
+             
+             <% lightgoing = false %>
+
+         </div>
+        </div>
+        
+            
+        
+         <div class="card-footer card-footer-bars">
+            <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-8 tVisitors"> 
+                  <p>Total Visitors: <%= totalvisitors %></p>    
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 mDetails">
+             <a class="mDetails" href="/bar/<%= encodedlist[i] %>">More Details</a>
+            </div>
+             
+             
+             
+             <% goingtonight = 0 %>
+             <% totalvisitors = 0 %>
+            </div>
+            </div>
+       </div> 
+              
+     </div>
+      
+           
+            
+        <%   } %> 
+        <input class="hideme" id="outputbarid" name="outputbarid" val="">
+            
+            
+                
+         
+            
+        </form>
+
+    <%   } %> 
+         </div> 
+    
+        
+        
+        
+        
+        
+    <% if ( notfound == "No results found.") { %>
+        <div class="container">
+        <div class="card">
+        <div class="card-content card-notfound">
+          <p id="noResultsFound"><%= notfound %></p>     
+        </div>
+        </div>
+        </div>
+        
+    <%    } %> 
+    
+    
+    
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/barset.js"></script>
+    
+</body>
+</html>

@@ -9,7 +9,6 @@ var session = require('express-session');
 var flash = require('connect-flash');
 
 
-
 var routes = require('./routes/index');
 
 var app = express();
