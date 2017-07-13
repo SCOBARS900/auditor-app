@@ -2,11 +2,12 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 300;
   line-height: 1.5em;
-  background-color: aliceblue;
+  background-color:darkturquoise;
+  
 }
 
 .container {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .card {
@@ -197,8 +198,8 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
 
 
 .titleh1 {
-    margin-top: -6px;
-    background: linear-gradient(60deg, #26c6da, #00acc1);
+    margin-top: 0px;
+    background: linear-gradient(60deg, #89ecda, #3bd6c6);
     font-size: 20px;
     color: white;
     font-weight: 600;
@@ -232,7 +233,8 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
   box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
   margin: -20px 15px 0;
   border-radius: 3px;
-  padding: 15px;
+  padding: 10px;
+  padding-top: 16px;
   background-color: #999999;
 }
 
@@ -429,7 +431,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
 
 .lsh2 {
     margin-top: -2px;
-    background: linear-gradient(60deg, #89ecda, #3bd6c6);
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
     font-size: 20px;
     color: white;
     font-weight: 600;
@@ -450,8 +452,25 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
 }
 
 
+.table {
+    background: grey;
+    color: white;
+}
 
+td {
+    text-align: center;
+    background-color: lightgray;
+    height: 80px;
+}
 
+.nMateria {
+    background: grey;
+    font-weight: 600;
+}
+
+.doneB {
+    margin-top: 14px;
+}
 
 
 

@@ -1,0 +1,100 @@
+<% include partials/head %>
+
+<body>
+<div class="container">
+<div class="card card-main">
+    
+<% if (tdMaterias.length > 0) { %>
+    <div class="card-form">
+
+  <div class="row">
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 table-responsive">
+      <table class="table table-bordered">
+          <thead>
+            
+            <tr>
+              <th>Materias</th>
+              <th>Aula 1</th>
+              <th>Aula 2</th>
+              <th>Aula 3</th>
+              <th>Aula 4</th>
+              <th>Aula 5</th>
+              <th>Aula 6</th>
+              <th>Aula 7</th>
+              <th>Aula 8</th>
+              <th>Aula 9</th>
+              <th>Aula 10</th>
+              <th>Aula 11</th>
+              <th>Aula 12</th>
+              <th>Aula 13</th>
+              <th>Aula 14</th>
+              <th>Aula 15</th>
+              <th>Aula 16</th>
+              <th>Aula 17</th>
+              <th>Aula 18</th>
+              <th>Aula 19</th>
+              <th>Aula 20</th>
+              <th>Aula 21</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (w = 0; w < tdMaterias.length; w++ ) { %>
+             <tr>
+              <td class="nMateria"><%= tdMaterias[w].name %></td>
+              <% if (tdMaterias[w].aulas.length > 0) { %>
+                <% for (i= 0; i < tdMaterias[w].aulas.length; i++) { %>
+                <td id="<%= tdMaterias[w].aulas[i]._id %>">
+                <form action="/registryaulas" method="post">
+                <input type="text" class="form-control login-control hideme" name="aulaId" value="<%= tdMaterias[w].name %>/<%= tdMaterias[w].aulas[i].numAula %> ">
+                <input id="<%= tdMaterias[w].aulas[i]._id %><%= tdMaterias[w].aulas[i].numAula %>" type="submit" class="form-control btn-default doneB" value="Done" />
+                
+                <% if (tdMaterias[w].aulas[i].quemFez.length > 0) { %>
+                    
+                <% if (tdMaterias[w].aulas[i].quemFez.length == 2) { %>
+                <script>
+                  document.getElementById('<%= tdMaterias[w].aulas[i]._id %>').style.backgroundColor='#ADFF2F';
+                </script>
+                <% } else if (tdMaterias[w].aulas[i].quemFez.length == 1) { %>
+                <script>
+                  document.getElementById('<%= tdMaterias[w].aulas[i]._id %>').style.backgroundColor='yellow';
+                </script>
+                <% } else { %>  
+                <script>
+                  document.getElementById('<%= tdMaterias[w].aulas[i]._id %>').style.backgroundColor='white';
+                </script> 
+                <%    }  %>
+                    
+                     
+                     <% var displayQF = tdMaterias[w].aulas[i].quemFez.map(function(qf) { %>
+                        <% if (qf.userName == user) { %>
+                            <script>
+                                document.getElementById('<%= tdMaterias[w].aulas[i]._id %><%= tdMaterias[w].aulas[i].numAula %>').style.backgroundColor='	#ADFF2F';
+                                document.getElementById('<%= tdMaterias[w].aulas[i]._id %><%= tdMaterias[w].aulas[i].numAula %>').style.color='white';
+                            </script>
+                        <% } %>
+                    
+                     <%    }); %>
+                    
+                <% } %>
+                </form>
+                </td>
+                <% } %>
+              <% } %>
+            </tr>     
+            <% } %>
+            
+          </tbody>
+          
+        </table>
+    </div>
+  </div>
+</div>    
+
+<% } %>
+    </div> 
+</div>
+
+    
+     
+</body>
+</html>

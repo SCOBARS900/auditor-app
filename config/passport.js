@@ -32,7 +32,6 @@ module.exports = function(passport) {
         if (user) {
           return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
         } else {
-          if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
               var newUser = new User();
               newUser.local.name = req.body.username;
               newUser.local.email = email;
@@ -43,10 +42,6 @@ module.exports = function(passport) {
                   throw err;
                 return done(null, newUser);
               });   
-          } else {
-            return done(null, false, req.flash('signupMessage', 'Invalid email.'));
-          }   
-          
         }
       });
     });
